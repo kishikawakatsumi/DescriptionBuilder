@@ -190,6 +190,9 @@
                 object_getInstanceVariable(obj, ivar_name, (void **)&voidPtrValue);
                 [description appendFormat:@"%p", voidPtrValue];
                 break;
+            default:
+                [description appendFormat:@"%s", ivar_type]; // TODO
+                break;
 		}
 	}
     [description appendString:@">"];
