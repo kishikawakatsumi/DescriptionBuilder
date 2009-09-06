@@ -43,7 +43,7 @@ static Settings *sharedSettings;
 }
 
 - (NSString *)description {
-    return [DescriptionBuilder reflectDescription];
+    return [DescriptionBuilder reflectDescription:self];
 }
 
 @end
