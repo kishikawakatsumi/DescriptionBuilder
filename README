@@ -1,17 +1,20 @@
-MapKit-Route-Directions (iPhone Sample Program)
+DescriptionBuilder (iPhone Utility Program)
 
-This is MapKit extentions.
-Includes Google Maps API wrappers and drawing polylines over map view.
+DescriptionBuilder is helper class to make easier implementing NSObject description method.
+Or dump all instance variables of any object. 
 
-Details
-http://d.hatena.ne.jp/KishikawaKatsumi/20090812
+* Usage
+- (NSString *)description {
+    return [DescriptionBuilder reflectDescription:self];
+}
 
-See Also...
-Drawing polyines or routes on a MKMapView (Using Map Kit on the iPhone)
-http://spitzkoff.com/craig/?p=65
+Or,
+- (NSString *)description {
+    return [DescriptionBuilder reflectDescription:self style:DescriptionStyleMultiLine];
+}
 
-Using MKAnnotation, MKPinAnnotationView and creating a custom MKAnnotationView in an MKMapView
-http://spitzkoff.com/craig/?p=81
+Output:
+<Settings: 0xd188b0; version = 100; autoLock = NO; twentyFourHourTime = YES; alarmSound = "digital-alarm"; alarmVolume = 1.000000>
 
 * Author 
 KISHIKAWA Katsumi
@@ -19,13 +22,3 @@ http://d.hatena.ne.jp/KishikawaKatsumi/ (in Japanese)
 
 * License
 The new BSD license
-
-* 3rd parties
-JSON Framework
------------------
-http://code.google.com/p/json-framework/
-
-Toolbar Icons
------------------
-eddit, Inc.
-http://www.eddit.com/
