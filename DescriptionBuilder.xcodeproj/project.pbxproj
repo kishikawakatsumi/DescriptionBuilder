@@ -51,14 +51,22 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				14F51EB610546C5C0076631A /* lib */,
 				1D3623240D0F684500981E51 /* DescriptionBuilderAppDelegate.h */,
 				1D3623250D0F684500981E51 /* DescriptionBuilderAppDelegate.m */,
-				14F51B9410542E1D0076631A /* DescriptionBuilder.h */,
-				14F51B9510542E1D0076631A /* DescriptionBuilder.m */,
 				14F51DBA105456E00076631A /* Settings.h */,
 				14F51DBB105456E00076631A /* Settings.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		14F51EB610546C5C0076631A /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				14F51B9410542E1D0076631A /* DescriptionBuilder.h */,
+				14F51B9510542E1D0076631A /* DescriptionBuilder.m */,
+			);
+			name = lib;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
