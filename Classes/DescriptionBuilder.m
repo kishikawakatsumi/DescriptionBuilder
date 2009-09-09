@@ -34,6 +34,7 @@
  @ オブジェクト (静的に型定義されているもの、または id として型定義されているもの)
  # クラスオブジェクト(Class)
  : メソッドセレクタ(SEL)
+ { 構造体
  */
 + (NSString *)reflectDescription:(id)obj style:(DescriptionStyle)style {
 	id objValue;
