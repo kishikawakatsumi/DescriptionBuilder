@@ -7,15 +7,15 @@
 //
 
 #import "DescriptionBuilderAppDelegate.h"
-#import "Settings.h"
+#import "TestObject.h"
 
 @implementation DescriptionBuilderAppDelegate
 
 @synthesize window;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    Settings *settings = [Settings sharedSettings];
-    NSLog(@"%@", settings);
+    TestObject *object = [TestObject sharedObject];
+    NSLog(@"%@", object);
     [window makeKeyAndVisible];
 }
 

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14F51B9610542E1D0076631A /* DescriptionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F51B9510542E1D0076631A /* DescriptionBuilder.m */; };
-		14F51DBC105456E00076631A /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F51DBB105456E00076631A /* Settings.m */; };
+		14F51DBC105456E00076631A /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 14F51DBB105456E00076631A /* TestObject.m */; };
 		1D3623260D0F684500981E51 /* DescriptionBuilderAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DescriptionBuilderAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -20,8 +20,8 @@
 /* Begin PBXFileReference section */
 		14F51B9410542E1D0076631A /* DescriptionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionBuilder.h; sourceTree = "<group>"; };
 		14F51B9510542E1D0076631A /* DescriptionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionBuilder.m; sourceTree = "<group>"; };
-		14F51DBA105456E00076631A /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		14F51DBB105456E00076631A /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		14F51DBA105456E00076631A /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObject.h; sourceTree = "<group>"; };
+		14F51DBB105456E00076631A /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObject.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* DescriptionBuilderAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionBuilderAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* DescriptionBuilderAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionBuilderAppDelegate.m; sourceTree = "<group>"; };
@@ -54,8 +54,8 @@
 				14F51EB610546C5C0076631A /* lib */,
 				1D3623240D0F684500981E51 /* DescriptionBuilderAppDelegate.h */,
 				1D3623250D0F684500981E51 /* DescriptionBuilderAppDelegate.m */,
-				14F51DBA105456E00076631A /* Settings.h */,
-				14F51DBB105456E00076631A /* Settings.m */,
+				14F51DBA105456E00076631A /* TestObject.h */,
+				14F51DBB105456E00076631A /* TestObject.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -173,7 +173,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* DescriptionBuilderAppDelegate.m in Sources */,
 				14F51B9610542E1D0076631A /* DescriptionBuilder.m in Sources */,
-				14F51DBC105456E00076631A /* Settings.m in Sources */,
+				14F51DBC105456E00076631A /* TestObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

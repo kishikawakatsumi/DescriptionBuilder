@@ -106,18 +106,21 @@
 		switch(*ivar_type) {
             case '@':
                 object_getInstanceVariable(obj, ivar_name, (void **)&objValue);
-                
                 if (!objValue) {
                     [description appendFormat:@"%@", [NSNull null]];
-                } else if ([objValue respondsToSelector:@selector(description)]) {
+                    break;
+                }
+                if ([objValue respondsToSelector:@selector(description)]) {
                     NSString *type = [NSString stringWithUTF8String:ivar_type];
-                    NSString *className = [type substringWithRange:NSMakeRange(2, [type length] - 3)];
-                    Class ivarClass = NSClassFromString(className);
-                    if ([NSString isSubclassOfClass:ivarClass]) {
-                        [description appendFormat:@"\"%@\"", [objValue description]];
-                    } else {
-                        [description appendFormat:@"%@", [objValue description]];
+                    if ([type length] > 3) {
+                        NSString *className = [type substringWithRange:NSMakeRange(2, [type length] - 3)];
+                        Class ivarClass = NSClassFromString(className);
+                        if ([NSString isSubclassOfClass:ivarClass]) {
+                            [description appendFormat:@"\"%@\"", [objValue description]];
+                            break;
+                        }
                     }
+                    [description appendFormat:@"%@", [objValue description]];
                 } else {
                     [description appendFormat:@"<%s: 0x%x>", class_getName([objValue class]), [objValue hash]];
                 }
@@ -190,8 +193,39 @@
                 object_getInstanceVariable(obj, ivar_name, (void **)&voidPtrValue);
                 [description appendFormat:@"%p", voidPtrValue];
                 break;
+            case '{':
+            {
+                NSString *type = [NSString stringWithUTF8String:ivar_type];
+                NSString *structName = [type substringWithRange:NSMakeRange(1, [type rangeOfString:@"="].location - 1)];
+                if ([structName isEqualToString:@"CGAffineTransform"]) {
+                    CGAffineTransform transform;
+                    object_getInstanceVariable(obj, ivar_name, (void **)&transform);
+                    [description appendFormat:@"%@", NSStringFromCGAffineTransform(transform)];
+                } else if ([structName isEqualToString:@"CGPoint"]) {
+                    CGPoint point;
+                    object_getInstanceVariable(obj, ivar_name, (void **)&point);
+                    [description appendFormat:@"%@", NSStringFromCGPoint(point)];
+                } else if ([structName isEqualToString:@"CGRect"]) {
+                    CGRect rect;
+                    object_getInstanceVariable(obj, ivar_name, (void **)&rect);
+                    [description appendFormat:@"%@", NSStringFromCGRect(rect)];
+                } else if ([structName isEqualToString:@"CGSize"]) {
+                    CGSize size;
+                    object_getInstanceVariable(obj, ivar_name, (void **)&size);
+                    [description appendFormat:@"%@", NSStringFromCGSize(size)];
+                } else if ([structName isEqualToString:@"_NSRange"]) {
+                    NSRange range;
+                    object_getInstanceVariable(obj, ivar_name, (void **)&range);
+                    [description appendFormat:@"%@", NSStringFromRange(range)];
+                } else if ([structName isEqualToString:@"UIEdgeInsets"]) {
+                    UIEdgeInsets insets;
+                    object_getInstanceVariable(obj, ivar_name, (void **)&insets);
+                    [description appendFormat:@"%@", NSStringFromUIEdgeInsets(insets)];
+                }
+                break;
+            }
             default:
-                [description appendFormat:@"%s", ivar_type]; // TODO
+                [description appendFormat:@"%s", ivar_type];
                 break;
 		}
 	}
