@@ -9,11 +9,24 @@
 #import "DescriptionBuilder.h"
 #import <objc/runtime.h>
 
+@interface DescriptionBuilder()
++ (NSString *)reflectDescription:(id)obj style:(DescriptionStyle)style targetClass:(Class)cls withSuperClass:(BOOL) superClassFlag;
+@end
+
 @implementation DescriptionBuilder
 
 + (NSString *)reflectDescription:(id)obj {
     return [DescriptionBuilder reflectDescription:obj style:DescriptionStyleDefault];
 }
+
++ (NSString *)reflectDescriptionWithSuperClass:(id)obj {
+    return [DescriptionBuilder reflectDescription:obj style:DescriptionStyleDefault targetClass:[obj class] withSuperClass:YES];
+}
+
++ (NSString *)reflectDescriptionWithSuperClass:(id)obj style:(DescriptionStyle)style {
+    return [DescriptionBuilder reflectDescription:obj style:style targetClass:[obj class] withSuperClass:YES];
+}
+
 
 /**
  c char
@@ -37,6 +50,9 @@
  { 構造体
  */
 + (NSString *)reflectDescription:(id)obj style:(DescriptionStyle)style {
+    return [DescriptionBuilder reflectDescription:obj style:style targetClass:[obj class] withSuperClass:NO];
+}
++ (NSString *)reflectDescription:(id)obj style:(DescriptionStyle)style targetClass:(Class)cls withSuperClass:(BOOL) superClassFlag{
 	id objValue;
     Class classValue;
     SEL selValue;
@@ -57,7 +73,7 @@
     
 	NSMutableString *description = [[[NSMutableString alloc] init] autorelease];
     
-    Class clazz = [obj class];
+    Class clazz = cls;
     unsigned int outCount = 0;
     Ivar *ivars = class_copyIvarList(clazz, &outCount);
     
@@ -230,6 +246,10 @@
                 break;
 		}
 	}
+    if (superClassFlag && class_getSuperclass(cls)) {
+        [description appendString:@"\n"];
+        [description appendString:[DescriptionBuilder reflectDescription:obj style:style targetClass:class_getSuperclass(cls) withSuperClass:superClassFlag]];
+    }
     [description appendString:@">"];
     if (outCount > 0) { free(ivars); }
     return description;
