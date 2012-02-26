@@ -20,5 +20,6 @@ typedef enum DescriptionStyle {
 
 + (NSString *)reflectDescription:(id)obj;
 + (NSString *)reflectDescription:(id)obj style:(DescriptionStyle)style;
++ (NSString *)reflectDescription:(id)obj style:(DescriptionStyle)style targetClass:(Class)cls;
 
 @end

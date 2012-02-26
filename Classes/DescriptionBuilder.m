@@ -37,6 +37,9 @@
  { 構造体
  */
 + (NSString *)reflectDescription:(id)obj style:(DescriptionStyle)style {
+    return [DescriptionBuilder reflectDescription:obj style:style targetClass:[obj class]];
+}
++ (NSString *)reflectDescription:(id)obj style:(DescriptionStyle)style targetClass:(Class)cls{
 	id objValue;
     Class classValue;
     SEL selValue;
@@ -57,7 +60,7 @@
     
 	NSMutableString *description = [[[NSMutableString alloc] init] autorelease];
     
-    Class clazz = [obj class];
+    Class clazz = cls;
     unsigned int outCount = 0;
     Ivar *ivars = class_copyIvarList(clazz, &outCount);
     
@@ -230,6 +233,10 @@
                 break;
 		}
 	}
+    if (class_getSuperclass(cls)) {
+        [description appendString:@"\n"];
+        [description appendString:[DescriptionBuilder reflectDescription:obj style:style targetClass:class_getSuperclass(cls)]];
+    }
     [description appendString:@">"];
     if (outCount > 0) { free(ivars); }
     return description;
