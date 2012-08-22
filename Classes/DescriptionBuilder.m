@@ -176,11 +176,11 @@
                 break;
             case 'l':
                 object_getInstanceVariable(obj, ivar_name, (void **)&longValue);
-                [description appendFormat:@"%d", longValue];
+                [description appendFormat:@"%ld", longValue];
                 break;
             case 'L':
                 object_getInstanceVariable(obj, ivar_name, (void **)&ulongValue);
-                [description appendFormat:@"%u", ulongValue];
+                [description appendFormat:@"%lu", ulongValue];
                 break;
             case 'q':
                 object_getInstanceVariable(obj, ivar_name, (void **)&longlongValue);
@@ -196,7 +196,7 @@
                 break;
             case 'd':
                 object_getInstanceVariable(obj, ivar_name, (void **)&doubleValue);
-                [description appendFormat:@"f", doubleValue];
+                [description appendFormat:@"%f", doubleValue];
                 break;
             case 'B':
                 object_getInstanceVariable(obj, ivar_name, (void **)&intValue);
